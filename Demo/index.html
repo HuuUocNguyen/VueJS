@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<script src="vue.js"></script>
+<script src="vue.min.js"></script>
+
+<head>
+    <title>Learn VueJS</title>
+</head>
+
+<body>
+
+    <h2>VueJS</h2>
+    <div id="app">
+        <ul>
+            <li v-for="x in todos">
+                {{ x.text }}
+            </li>
+        </ul>
+    </div>
+
+    <div id="app-2">
+        <span v-bind:title="message">
+            Hover your mouse over me for a few seconds
+            to see my dynamically bound title!
+        </span>
+        </br>
+        {{message}}
+    </div>
+
+    <div id="app-3">
+        <span v-if="seen">Now you see me</span>
+    </div>
+
+    <div id="app-5">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <input v-model="message">
+    </div>
+    <script>
+        var app6 = new Vue({
+            el: '#app-6',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+
+        var app5 = new Vue({
+            el: '#app-5',
+            data: {
+                message: 'Hello Vue.js!'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+        })
+
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                seen: true
+            }
+        })
+
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                message: 'You loaded this page on ' + new Date().toLocaleString()
+            }
+        })
+
+        myObject = new Vue({
+            el: '#app',
+            data: {
+                todos: [
+                    { text: 'Learn JavaScript' },
+                    { text: 'Learn Vue.js' },
+                    { text: 'Build Something Awesome' }
+                ]
+            }
+        })
+    </script>
+
+</body>
+
+</html>
